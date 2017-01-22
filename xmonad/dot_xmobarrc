@@ -1,0 +1,27 @@
+Config {
+font = "xft:Inconsolata:size=8:bold:antialias=true"
+, bgColor = "black"
+, fgColor = "grey"
+, position = Static { xpos = 0 , ypos = 0, width = 1800, height = 30 }
+, border = NoBorder
+, borderColor = "black"
+, commands = [  --Run MultiCpu ["-t","Cpu: <total0>% <total1>% <total2>% <total3>%","-L","30","-H","60","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC","-w","1"] 50
+  Run Memory ["-t","Mem: <used>M"] 50
+, Run Wireless "wlan0" ["-t", "<essid>: <quality>%"] 50
+, Run Date "%a %b %_d %k:%M" "date" 50
+, Run ThermalZone 0 ["-t","<temp>C","-L","40","-H","79","-h","red","-n","yellow","-l","lightblue"] 50
+, Run StdinReader
+--, Run Weather "EINN" ["-t","<tempC>C <pressure>hPa <skyCondition>","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+, Run BatteryP ["BAT1"]
+              ["-t", "<left>%<acstatus>",
+               "-L", "10", "-H", "80", "-p", "3",
+               "--", "-O", " <fc=cadetblue3>On</fc>", "-o", "",
+               "-L", "-15", "-H", "-5",
+               "-l", "red", "-m", "blue", "-h", "green"]
+              600
+]
+, sepChar = "%"
+, alignSep = "}{"
+--, template = "%StdinReader%}{[%wlan0wi%]  [%memory%]  [Batt:%battery%]  [%thermal0%]  [%EINN%]  <fc=#ee9a00>%date%</fc>"
+, template = "%StdinReader%}{[%wlan0wi%]  [%memory%]  [Batt:%battery%]  [%thermal0%]  <fc=#ee9a00>%date%</fc>"
+}

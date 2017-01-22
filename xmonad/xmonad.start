@@ -1,0 +1,11 @@
+#!/bin/bash
+
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 12 --transparent true --alpha 0 --tint 0x000000 --height 30 &
+nm-applet &  
+redshift & 
+indicator-cpufreq &
+kmix &
+dropbox start 
+xloadimage -onroot -border black  ${HOME}/local/wallpapers/lioness_3-wallpaper-3840x2160.jpg   &
+gsettings set org.gnome.settings-daemon.plugins.background active false
+exec xmonad
